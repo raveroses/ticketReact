@@ -2,7 +2,10 @@ import { useState } from "react";
 import { FaList } from "react-icons/fa6";
 import { IoIosCreate } from "react-icons/io";
 import { IoLogOut } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
+import useRouteProtection from "../../routeprotection/routeProtector";
 const Sidebar = () => {
+  useRouteProtection();
   const [sidebardetails] = useState([
     {
       icon: <FaList />,
@@ -17,6 +20,12 @@ const Sidebar = () => {
       names: "Log out",
     },
   ]);
+
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("Loginstore");
+    navigate("/login");
+  };
 
   const sideBarListing = sidebardetails.map((items, index) => {
     return (
@@ -33,6 +42,11 @@ const Sidebar = () => {
               }
             : {}
         }
+        onClick={() => {
+          if (items.names === "Log out") {
+            handleLogout();
+          }
+        }}
       >
         <div className="icon">{items.icon}</div>
         <h3>{items.names}</h3>

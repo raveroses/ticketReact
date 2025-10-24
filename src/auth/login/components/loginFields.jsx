@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginField = () => {
+  const navigate = useNavigate();
   const [userLogin, setUserLogin] = useState(() => {
     try {
       const receive = localStorage.getItem("Loginstore");
@@ -56,6 +58,7 @@ const LoginField = () => {
 
     localStorage.setItem("Loginstore", JSON.stringify(userLogin));
     console.log("Login successfully");
+    navigate("/landingPage");
     setUserLogin({
       email: "",
       password: "",
