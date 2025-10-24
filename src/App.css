@@ -1,0 +1,136 @@
+body {
+  background-color: black;
+  max-width: 1440px;
+  color: white;
+  padding: 30px 200px;
+  /* display: flex; */
+  /* justify-content: center; */
+}
+.container {
+  padding: 20px 100px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar {
+  display: flex;
+  gap: 30px;
+}
+
+.navbar a {
+  color: white;
+  font-size: 15px;
+  text-decoration: none;
+  background-color: blueviolet;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+.signupForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.signupForm div {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 50px;
+}
+.signupForm div label {
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+.signupForm input {
+  width: 500px;
+  padding: 15px 10px;
+  border: none;
+  outline: none;
+}
+.signupForm div button {
+  background-color: blueviolet;
+  color: white;
+  width: 200px;
+  padding: 10px;
+}
+.signupForm select {
+  width: 500px;
+  padding: 15px 10px;
+  border: none;
+  outline: none;
+}
+
+.signupForm select option {
+  padding: 15px 10px;
+}
+.signupcontainer {
+  margin: 100px 400px;
+}
+
+.sidebar-container {
+  display: flex;
+  gap: 100px;
+  margin-top: 100px;
+}
+.sidebar {
+  background-color: blueviolet;
+  color: white;
+  width: 250px;
+  height: 600px;
+  padding: 30px;
+}
+.top {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.top h2 {
+  color: black;
+  font-size: 22px;
+}
+
+.top .icon {
+  color: black;
+  font-size: 28px;
+}
+
+.sidebar-components {
+  margin-top: 100px;
+}
+
+.sidebar-flex {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 2px solid black;
+  margin-top: 20px;
+  padding-left: 20px;
+  border-radius: 3px;
+}
+
+.ticket-list-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap:20px
+}
+.ticket-list {
+  background-color: blueviolet;
+  color: white;
+  width: 300px;
+  padding: 10px;
+}
+
+.actn-btn {
+  display: flex;
+  justify-content: space-between;
+}
+.actn-btn .edit {
+  padding: 9px;
+  background-color: green;
+}
+
+.actn-btn .delete {
+  padding: 9px;
+  background-color: red;
+}
