@@ -4,7 +4,7 @@ import { IoIosCreate } from "react-icons/io";
 import { IoLogOut } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import useRouteProtection from "../../routeprotection/routeProtector";
-const Sidebar = ({ handlleOpeningTab, isOpen }) => {
+const Sidebar = ({ handlleOpeningTab }) => {
   useRouteProtection();
   const [sidebardetails] = useState([
     {
@@ -35,7 +35,7 @@ const Sidebar = ({ handlleOpeningTab, isOpen }) => {
         style={
           items.names === "Log out"
             ? {
-                marginTop: "200px",
+                marginTop: "0px",
                 color: "white",
                 backgroundColor: "red",
                 border: "none",
@@ -45,9 +45,9 @@ const Sidebar = ({ handlleOpeningTab, isOpen }) => {
         onClick={() => {
           if (items.names === "Log out") {
             handleLogout();
-          } else {
-            handlleOpeningTab(items);
           }
+
+          handlleOpeningTab(items.names);
         }}
       >
         <div className="icon">{items.icon}</div>

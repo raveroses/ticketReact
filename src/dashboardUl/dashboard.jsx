@@ -77,7 +77,7 @@ const Dashboard = () => {
     setEditIndex(index);
   };
 
-  const [isOpen, setIsOpen] = useState("");
+  const [isOpen, setIsOpen] = useState("Create Ticket");
   const handlleOpeningTab = (value) => {
     setIsOpen(value);
   };
@@ -97,17 +97,19 @@ const Dashboard = () => {
         </div>
 
         <div className="creation">
-          <TicketCreeation
-            ticketCreation={ticketCreation}
-            handleTicketOnchange={handleTicketOnchange}
-            handleTicketCreation={handleTicketCreation}
-          />
-
-          <TicketList
-            ticketCreationList={ticketCreationList}
-            handleDelete={handleDelete}
-            handleEdit={handleEdit}
-          />
+          {isOpen === "Create Ticket" ? (
+            <TicketCreeation
+              ticketCreation={ticketCreation}
+              handleTicketOnchange={handleTicketOnchange}
+              handleTicketCreation={handleTicketCreation}
+            />
+          ) : (
+            <TicketList
+              ticketCreationList={ticketCreationList}
+              handleDelete={handleDelete}
+              handleEdit={handleEdit}
+            />
+          )}
         </div>
       </div>
       <ToastContainer

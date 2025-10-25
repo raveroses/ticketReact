@@ -5,6 +5,7 @@ import SignUp from "./auth/signup/signup";
 import Navbar from "./home/components/navbar";
 import Login from "./auth/login/login";
 import Dashboard from "./dashboardUl/dashboard";
+import Footer from "./home/components/footer";
 function App() {
   return (
     <BrowserRouter>
@@ -15,6 +16,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
