@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast, Bounce } from "react-toastify";
 
 const LoginField = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const LoginField = () => {
             password: "",
           };
     } catch (error) {
-      console.log(error.message);
+      toast.error(error.message);
       return {
         email: "",
         password: "",
@@ -31,7 +32,7 @@ const LoginField = () => {
             password: "",
           };
     } catch (error) {
-      console.log(error.message);
+      toast.error(error.message);
       return {
         email: "",
         password: "",
@@ -52,17 +53,19 @@ const LoginField = () => {
       !userLogin.email ||
       userLogin.password !== fetchUserDetail.password
     ) {
-      console.log("Please, check your fields");
+      toast.error("Please, check your fields");
       return;
     }
 
     localStorage.setItem("Loginstore", JSON.stringify(userLogin));
-    console.log("Login successfully");
-    navigate("/landingPage");
+    toast.success("Login successfully");
     setUserLogin({
       email: "",
       password: "",
     });
+    setTimeout(() => {
+      navigate("/landingPage");
+    }, 1000);
   };
 
   return (

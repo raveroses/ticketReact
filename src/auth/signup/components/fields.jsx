@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast, Bounce } from "react-toastify";
 
 const Fields = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const Fields = () => {
             password: "",
           };
     } catch (error) {
-      console.log(error.message);
+      toast.error(error.message);
       return {
         fullName: "",
         email: "",
@@ -32,21 +33,22 @@ const Fields = () => {
     e.preventDefault();
 
     if (!user.fullName || !user.email || !user.email) {
-      console.log("Please, check your fields");
+      toast.error("Please, check your fields");
       return;
     }
 
     localStorage.setItem("store", JSON.stringify(user));
-    console.log("Account created successfully");
-    navigate("/login");
+    toast.success("Account created successfully");
     setUser({
       fullName: "",
       email: "",
       password: "",
     });
+    setTimeout(() => {
+      navigate("/login");
+    }, 1000);
   };
 
-  console.log(user);
   return (
     <form className="signupForm" onSubmit={handleSubmit}>
       <div>

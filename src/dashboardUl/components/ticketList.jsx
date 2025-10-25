@@ -1,5 +1,6 @@
 const TicketList = ({ ticketCreationList, handleDelete, handleEdit }) => {
-  const ticketListing = ticketCreationList.map((ticket, index) => {
+    const safeList = Array.isArray(ticketCreationList) ? ticketCreationList : [];
+  const ticketListing = safeList.map((ticket, index) => {
     return (
       <div className="ticket-list" key={index}>
         <h2>{ticket.title}</h2>

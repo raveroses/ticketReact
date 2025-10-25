@@ -4,6 +4,7 @@ import TicketCreeation from "./components/ticketcreation";
 import { useState } from "react";
 import TicketList from "./components/ticketList";
 import StatusList from "./components/statusList";
+import { ToastContainer, toast, Bounce } from "react-toastify";
 const Dashboard = () => {
   const [ticketCreation, setTicketCreation] = useState({
     title: "",
@@ -12,14 +13,14 @@ const Dashboard = () => {
   });
   const [ticketCreationList, setTicketCreationList] = useState(() => {
     try {
-      const stored = localStorage.getItem("store");
-      return stored ? JSON.parse(stored) : [];
+      const receive = localStorage.getItem("store");
+      const parsed = receive ? JSON.parse(receive) : [];
+      return Array.isArray(parsed) ? parsed : [];
     } catch (error) {
-      console.error("Failed to load tickets:", error);
+      console.error("Error parsing localStorage:", error);
       return [];
     }
   });
-
   const handleTicketOnchange = (e) => {
     const { name, value } = e.target;
     setTicketCreation((prev) => ({ ...prev, [name]: value }));
@@ -28,13 +29,13 @@ const Dashboard = () => {
 
   const handleTicketCreation = (e) => {
     e.preventDefault();
-    console.log("clicked");
+
     if (
       !ticketCreation.title ||
       !ticketCreation.description ||
       !ticketCreation.status
     ) {
-      console.log("please,check all fields");
+      toast.error("please,check all fields");
       return;
     }
 
@@ -45,7 +46,7 @@ const Dashboard = () => {
         index === editIndex ? ticketCreation : ticket
       );
       setEditIndex(null);
-      console.log("Ticket updated successfully");
+      toast.success("Ticket updated successfully");
     } else {
       updatedList = [...ticketCreationList, ticketCreation];
 
@@ -64,18 +65,22 @@ const Dashboard = () => {
     const updatedList = ticketCreationList.filter(
       (ticket) => ticket.title !== value
     );
+    toast.success("Ticket Deleted successfully");
     setTicketCreationList(updatedList);
     localStorage.setItem("store", JSON.stringify(updatedList));
   };
 
   const handleEdit = (index) => {
     const ticketToEdit = ticketCreationList[index];
+    toast.success("Ticket Edited successfully");
     setTicketCreation(ticketToEdit);
     setEditIndex(index);
   };
 
-  
-
+  const [isOpen, setIsOpen] = useState("");
+  const handlleOpeningTab = (value) => {
+    setIsOpen(value);
+  };
   return (
     <section className="sidebar-container">
       <StatusList ticketCreationList={ticketCreationList} />
@@ -88,7 +93,7 @@ const Dashboard = () => {
             <h2>Dashboard</h2>
           </div>
 
-          <Sidebar />
+          <Sidebar isOpen={isOpen} handlleOpeningTab={handlleOpeningTab} />
         </div>
 
         <div className="creation">
@@ -105,6 +110,18 @@ const Dashboard = () => {
           />
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </section>
   );
 };

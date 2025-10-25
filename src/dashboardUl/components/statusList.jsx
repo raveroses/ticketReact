@@ -1,14 +1,15 @@
 const StatusList = ({ ticketCreationList }) => {
+  const safeList = Array.isArray(ticketCreationList) ? ticketCreationList : [];
   const statusLists = [
-    { label: "Total Tickets", value: ticketCreationList.length },
+    { label: "Total Tickets", value: safeList.length },
     {
       label: "Open Tickets",
-      value: ticketCreationList.filter((item) => item.status === "open").length,
+      value: safeList.filter((item) => item.status === "open").length,
     },
 
     {
       label: "Resolve Tickets",
-      value: ticketCreationList.filter((item) => item.status === "closed")
+      value: safeList.filter((item) => item.status === "closed")
         .length,
     },
   ];
