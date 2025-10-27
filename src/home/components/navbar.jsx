@@ -21,7 +21,7 @@ const Navbar = () => {
         <Link to={"/login"}>Login</Link>
         <Link to="/signup"> Get Started</Link>
         <Link to={"/dashboard"}>Dashboard</Link>
-        <Link to={"#"}>Ticket Management screen</Link>
+        <Link to={"/dashboard"}>Ticket Management screen</Link>
       </nav>
 
       <div style={{ display: isOpen ? "block" : "none" }}>
