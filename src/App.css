@@ -333,7 +333,7 @@ header {
   .hero-section {
     flex-direction: column;
     height: 820px;
-    padding: 10px 0px;
+    padding: 10px 10px;
     gap: 0;
   }
   .hero-section .circle {
@@ -403,6 +403,20 @@ header {
 
   .creation {
     margin-top: 100px;
+  }
+
+  .btns {
+    gap: 30px;
+    justify-content: center;
+  }
+  .btns button {
+    width: 160px;
+  }
+  .texts {
+    padding-bottom: 100px;
+  }
+  .hero-section div img {
+    height: 369px;
   }
 }
 
