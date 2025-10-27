@@ -117,6 +117,7 @@ footer ul li {
   width: auto;
   height: 500px;
 }
+
 header {
   display: flex;
   justify-content: space-between;

@@ -9,8 +9,7 @@ const StatusList = ({ ticketCreationList }) => {
 
     {
       label: "Resolve Tickets",
-      value: safeList.filter((item) => item.status === "closed")
-        .length,
+      value: safeList.filter((item) => item.status === "closed").length,
     },
   ];
 

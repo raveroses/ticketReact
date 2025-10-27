@@ -50,7 +50,7 @@ const LoginField = () => {
     if (
       !userLogin.email ||
       userLogin.email !== fetchUserDetail.email ||
-      !userLogin.email ||
+      !userLogin.password ||
       userLogin.password !== fetchUserDetail.password
     ) {
       toast.error("Please, check your fields");
@@ -64,7 +64,7 @@ const LoginField = () => {
       password: "",
     });
     setTimeout(() => {
-      navigate("/landingPage");
+      navigate("/");
     }, 1000);
   };
 

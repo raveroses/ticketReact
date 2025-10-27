@@ -32,7 +32,7 @@ const Fields = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!user.fullName || !user.email || !user.email) {
+    if (!user.fullName || !user.email || !user.password) {
       toast.error("Please, check your fields");
       return;
     }
